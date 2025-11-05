@@ -1,13 +1,4 @@
 
-
-## Basic Hashmap
-
-
-### Please read hashmap.h for more information about functions.
-
-
-
-```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -32,7 +23,7 @@ int main() {
 
     // The hashmap size is rounded up to next power of two.
     const size_t hashmap_size = 200;
-
+    
     struct hashmap_t map = create_hashmap(hashmap_size);
 
 
@@ -79,6 +70,7 @@ int main() {
     }
     */
 
+
     /*
     // ============ DELETING ELEMENTS =============
     if(hashmap_del(&map, document_E_ID)) {
@@ -91,7 +83,7 @@ int main() {
 
 
     struct hashmap_pair_t* pair = NULL;
-
+   
     pair = hashmap_get(&map, document_A_ID);
     if(pair) {
         struct document_t* document = (struct document_t*)pair->ptr;
@@ -112,6 +104,8 @@ int main() {
 
     struct hashmap_bucket_t* bucket = map.buckets_link_tail;
     while(bucket) {
+
+
         struct hashmap_pair_t* pair = &bucket->pairs[0];
         if(pair->ptr) {
             printf("%p (num_pairs = %li) %s\n",
@@ -124,10 +118,12 @@ int main() {
 
         bucket = bucket->next;
     }
+    
 
     free_hashmap(&map);
     return 0;
 }
-```
+
+
 
 
