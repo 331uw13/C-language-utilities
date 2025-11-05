@@ -1,0 +1,3 @@
+./out
+./hashmap_build.sh
+./main.c
