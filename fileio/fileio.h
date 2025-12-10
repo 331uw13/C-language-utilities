@@ -1,5 +1,5 @@
-#ifndef LIBMUTKA_FILEIO_H
-#define LIBMUTKA_FILEIO_H
+#ifndef FILEIO_H
+#define FILEIO_H
 
 #include <fcntl.h>
 #include <sys/mman.h>
