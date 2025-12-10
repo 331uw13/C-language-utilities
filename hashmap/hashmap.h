@@ -56,6 +56,11 @@ bool hashmap_key_exists(struct hashmap_t* map, int key,
 );     
 
 
+uint64_t strtokey(const char* str);
+
+
+void hashmap_clear(struct hashmap_t* map);
+
 // Add existing pointer to hashmap.
 // 'ptr' is only copied (not memory where it points to).
 //

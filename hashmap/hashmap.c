@@ -155,10 +155,6 @@ void free_hashmap(struct hashmap_t* map) {
         bucket->next = NULL;
     }
 
-    printf("\n%s\n", __func__);
-    printf("Freed %li bucket pairs, pair ptrs: %li\n", free_count, free_count_pairptr);
-    printf("Map size was: %li\n", map->map_size);
-
     free(map->buckets);
     map->buckets = NULL;
     map->buckets_link_tail = NULL;
@@ -167,6 +163,24 @@ void free_hashmap(struct hashmap_t* map) {
 
 uint64_t hash_i32_key(int key) {
     return (key ^ (key & 0xFF000000)) * 2654435761;
+}
+
+uint64_t strtokey(const char* str) {
+    uint64_t key = 0;
+
+    size_t len = strlen(str);
+    for(size_t i = 0; i < len; i++) {
+        key = hash_i32_key((int)str[i]);
+    }
+    return key;
+}
+
+void hashmap_clear(struct hashmap_t* map) {
+    struct hashmap_bucket_t* bucket = map->buckets_link_tail;
+    while(bucket) {
+        bucket->num_pairs = 0;
+        bucket = bucket->next;
+    }
 }
 
 bool hashmap_key_exists(struct hashmap_t* map, int key, 
